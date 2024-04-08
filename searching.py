@@ -35,7 +35,7 @@ def linear_search(sequence, number):
         else:
             pass
 
-    return {"psitions": positions, "count": len(positions)}
+    return {"positions": positions, "count": len(positions)}
 
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")

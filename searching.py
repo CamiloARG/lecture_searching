@@ -20,6 +20,23 @@ def read_data(file_name, field):
     else:
         return None
 
+def linear_search(sequence, number):
+    """
+    Search the sequence and the number, where it is located
+    :param sequence:searched sequence
+    :param number:found number
+    :return:dictionary with two keys, first key the position and the second one the number of ocurrences
+    """
+    positions = []
+
+    for i, cislo in enumerate(sequence):
+        if cislo == number:
+            positions.append(i)
+        else:
+            pass
+
+    return {"psitions": positions, "count": len(positions)}
+
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")
     print(sequential_data)

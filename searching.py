@@ -34,16 +34,35 @@ def linear_search(sequence,wanted_number):
             index_numbers.append(i)
 
     new_dict['positions'] = index_numbers
-
     new_dict["count"] = sequence.count(wanted_number)
 
     return new_dict
 
+def pattern_search(sequence,wanted_value):
+
+    value_list = []
+    sequence_list = list(sequence)
+    sequence_str = ""
+
+    for i in sequence_list:
+        if isinstance(i,str):
+            sequence_str += i
+
+    for i in range(len(sequence_str)):
+        if sequence_str[i:i+3] == wanted_value:
+            value_list.append(wanted_value)
+
+    mnozina = value_list.count(wanted_value)
+
+    return mnozina
+
 def main():
-    numbers = read_data('sequential.json','unordered_numbers')
+    numbers = read_data('sequential.json','dna_sequence')
     print(numbers)
-    wanted_number = linear_search(numbers,5)
-    print(wanted_number)
+    #wanted_number = linear_search(numbers,5)
+    #print(wanted_number)
+    wanted_value = pattern_search(numbers,"ATA")
+    print(wanted_value)
 
 
 if __name__ == '__main__':

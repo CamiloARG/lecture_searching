@@ -24,9 +24,26 @@ def read_data(file_name, field):
 
     return sequential[field]
 
+def linear_search(sequence,wanted_number):
+
+    new_dict = {}
+    index_numbers = []
+
+    for i in range(len(sequence)):
+        if sequence[i] == wanted_number:
+            index_numbers.append(i)
+
+    new_dict['positions'] = index_numbers
+
+    new_dict["count"] = sequence.count(wanted_number)
+
+    return new_dict
+
 def main():
     numbers = read_data('sequential.json','unordered_numbers')
     print(numbers)
+    wanted_number = linear_search(numbers,5)
+    print(wanted_number)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,10 @@
 from pathlib import Path
 import json
+import matplotlib.pyplot as plt
+import time
+
+from generators import ordered_sequence
+
 
 def read_data(file_name, field):
     """
@@ -91,13 +96,37 @@ def binarny_search(numbers_list,number):
                     if numbers_list[i] == number:
                         return i
 
+def pattern_search(sequence,wanted_value):
+
+    value_list = []
+    sequence_list = list(sequence)
+    sequence_str = ""
+
+    for i in sequence_list:
+        if isinstance(i,str):
+            sequence_str += i
+
+    for i in range(len(sequence_str)):
+        if sequence_str[i:i+3] == wanted_value:
+            value_list.append(wanted_value)
+
+    mnozina = value_list.count(wanted_value)
+
+    return mnozina
+
 def main():
-    numbers = read_data('sequential.json', 'ordered_numbers')
-    print(numbers)
+    #numbers = read_data('sequential.json', 'ordered_numbers')
+    #print(numbers)
     # wanted_number = linear_search(numbers,5)
     # print(wanted_number)
-    wanted_idx = binarny_search(numbers,70)
-    print(wanted_idx)
+    #wanted_idx = binarny_search(numbers,70)
+    #print(wanted_idx)
+    sizes = [100, 500, 1000, 5000, 10000]
+    result = []
+    for size in sizes:
+        seq = ordered_sequence(size)
+
+
 
 if __name__ == "__main__":
     main()
